@@ -32,6 +32,10 @@ public class Order implements Serializable {
     @JoinColumn(name = "client_id")
     private User client;
 
+
+    @OneToMany(mappedBy = "id.order")
+    private Set<OrderItem> items = new HashSet<>();
+
     public Order(){
 
     }
@@ -78,6 +82,11 @@ public class Order implements Serializable {
         }
 
     }
+
+    public Set<OrderItem> getItems(){
+        return items;
+    }
+
 
     @Override
     public boolean equals(Object o) {
